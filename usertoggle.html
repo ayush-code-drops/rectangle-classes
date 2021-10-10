@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User toggle</title>
+    <style>
+        #results{
+            display: flex;
+            gap: 10px;
+        }
+        .cont{
+border: 1px solid black;
+padding: 4px;
+        }
+    </style>
+</head>
+<body>
+   <form id="form">
+<div><input type="text" id="user_name" placeholder="Enter Username" required></div>
+<div><input type="number" id="number" placeholder="Enter phone number" required></div>
+<div><input type="submit" value="Submit" id="submit"></div>
+   </form> 
+<div id="results">
+
+</div>
+    <script>
+        const userName=document.getElementById('user_name')
+        const number=document.getElementById('number')
+        const submitBtn=document.getElementById('submit')
+        const form=document.getElementById('form');
+        const results=document.getElementById('results');
+
+        form.addEventListener('submit',(e)=>{
+           
+            e.preventDefault();
+           const card= createCard()
+           results.append(card)
+        })
+
+
+
+        function createCard(){
+            const div=document.createElement('div');
+            div.className="cont"
+            const h3=document.createElement('h3');
+            h3.textContent=`Name: ${userName.value}`;
+            const details=document.createElement('details');
+            const summary=document.createElement('summary');
+            summary.textContent='Show/Hide'
+            const p=document.createElement('p');
+            p.textContent=number.value;
+
+            details.append(summary,p)
+            div.append(h3,details)
+
+            return div
+        }
+        
+    </script>
+</body>
+</html>
